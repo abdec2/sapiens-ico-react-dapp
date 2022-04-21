@@ -2,7 +2,7 @@ import { ethers } from 'ethers';
 import { useContext, useRef, useState } from 'react';
 import Web3Modal from 'web3modal';
 import { GlobalContext } from '../context/GlobalContext';
-import CONFIG from './../abi/config.json'
+import CONFIG from './../abi/config.json';
 
 import CROWDSALE_ABI from './../abi/abi.json';
 const crowdsaleAddress = CONFIG.ICO_CONTRACT_ADDRESS;
@@ -114,6 +114,7 @@ function Presale() {
                     </div>
                 </form>
             </div>
+            <div className="before:fixed before:top-0 before:left-0 before:w-full page__bg -z-30"></div>
         </div>
     );
 }

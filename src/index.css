@@ -39,4 +39,13 @@ body::-webkit-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .page__bg::before {
+      background: url('./assets/dot-c.png') repeat-x;
+      height: 100%;
+      background-position: center;
+      background-attachment: fixed;
+      background-size: contain;
+      opacity: 0.05;
+  }
   
