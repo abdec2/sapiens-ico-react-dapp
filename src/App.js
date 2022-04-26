@@ -2,13 +2,18 @@ import HeaderComponent from "./components/Header";
 import Presale from "./components/Presale";
 import ShapeDivider from "./components/ShapeDivider";
 import FooterComponent from './components/Footer';
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalProvider } from "./context/GlobalContext";
 
 import Particles from "react-tsparticles";
 import { loadFull } from 'tsparticles'
+import AlertBox from "./components/AlertBox";
 
 function App() {
+  const [error, setError] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+
+
   const particlesInit = async (main) => {
     await loadFull(main);
   };
@@ -100,11 +105,12 @@ function App() {
               detectRetina: true,
             }}
           />
-          <HeaderComponent />
+          <HeaderComponent setError={setError} setErrMsg={setErrMsg}/>
           {/* <ShapeDivider /> */}
           <Presale />
         </div>
       </div>
+      {error && (<AlertBox  msg={errMsg}/>)}
       <FooterComponent />
     </GlobalProvider>
   );

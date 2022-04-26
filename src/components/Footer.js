@@ -33,7 +33,7 @@ const Footer = () => {
                         </a>
                     </span>
                     <p className="text-[#e9c941] text-xs text-center sm:text-left mt-2 sm:mt-0">Powered by:&nbsp; 
-                        <a href="http://www.brdigitech.com" target="blank" className="text-blue-600 hover:text-blue-200"><i>Button R Digitech (bRd)</i></a>
+                        <a href="#" className="text-blue-600 hover:text-blue-200"><i>Sapiens Lab</i></a>
                     </p>
                 </div> 
             </div>

@@ -3,9 +3,10 @@ import { useContext, useEffect } from "react";
 import Web3Modal from 'web3modal';
 import { GlobalContext } from "../context/GlobalContext";
 import logo from './../assets/logo512.png';
+import CONFIG from './../abi/config.json'
 
 
-const HeaderComponent = () => {
+const HeaderComponent = ({setError, setErrMsg}) => {
 
     const { account, addAccount, delAccount } = useContext(GlobalContext);
 
@@ -20,6 +21,15 @@ const HeaderComponent = () => {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         addAccount({ id: address });
+        const network = await provider.getNetwork();
+        console.log(network)
+        if(network.chainId !== CONFIG.NETWORK_ID ) {
+            setError(true) 
+            setErrMsg('Contract is not deployed on current network. please choose Binance Smartchain Mainnet')
+        } else {
+            setError(false) 
+            setErrMsg('')
+        }
         
     }
     useEffect(()=>{
@@ -41,7 +51,7 @@ const HeaderComponent = () => {
                 {account ? (
                     <div className="flex items-center flex-col">
                         <a
-                            href={`https://etherscan.io/address/${account}`}
+                            href={`${CONFIG.BLOCKCHAIN_EXPLORER}address/${account}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-6 py-2 bg-[#e9c941] hover:bg-yellow-300 rounded text-black">
